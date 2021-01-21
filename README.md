@@ -3,7 +3,8 @@
 #### 注意事项(单master存在单点故障，生产环境慎用)
 1.  三台`ubuntu18.04`系统，主机名不要相同，保证时间相同
 2.  在内网机器中，需要单独找一台部署机来执行脚本，保证部署机器与要部署三台节点正常通信
-3.  修改修改4个文件的`IP，start.sh`、`./scripts/deploy-machine-node.sh`、`./scripts/nodex.txt`、`./scripts/install-kuboard.sh`
+3.  修改修改4个文件的`IP`，`start.sh`、`./scripts/deploy-machine-node.sh`、`./scripts/nodex.txt`、`./scripts/install-kuboard.sh`
+4. 选择`kuboard`作为`k8s`容器集群web端的管理工具
 
 
 
