@@ -1,7 +1,7 @@
-# `ubuntu 18.05`上shell脚本离线一键部署`k8s-v1.18.5`
+# `ubuntu 18.04.5`上shell脚本离线一键部署`k8s-v1.18.5`
 
 ## 注意事项(单master存在单点故障，生产环境慎用)
-1.  三台`ubuntu18.04`系统，主机名不要相同，保证时间相同
+1.  三台`ubuntu18.04.5`系统，主机名不要相同，保证时间相同
 2.  在内网机器中，需要单独找一台部署机来执行脚本，保证部署机器与要部署三台节点正常通信
 3.  修改4个文件的`IP`数组，`start.sh`、`./scripts/deploy-machine-node.sh`、`./scripts/nodex.txt`、`./scripts/install-kuboard.sh`
 4. 默认`IP`数组中的第一个`IP`为master节点, 例如：`ipgroup`=(192.168.10.128 192.168.10.129 192.168.10.130),  那么192.168.10.128 就是master IP， 129和130就是node IP
