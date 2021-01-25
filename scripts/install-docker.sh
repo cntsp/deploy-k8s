@@ -1,4 +1,5 @@
 #!/bin/bash
+#data:18-01-2021
 
 install_home="/root/k8s"
 # 离线安装docker-ce

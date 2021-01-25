@@ -2,7 +2,6 @@
 #date:15-01-2021
 
 nodegroup=(k8snode1 k8snode2 k8snode3)
-# ipgroup=(192.168.96.67 192.168.96.76 192.168.96.68)
 install_home="/root/k8s"
 ipgroup=()
 
@@ -58,7 +57,7 @@ do
 	scp ./deb/*.deb ./scripts/* ./yaml/* root@${ipgroup[$i]}:$install_home/
 	ssh root@${ipgroup[$i]} -t -t "bash $install_home/prepare-environment.sh"
 	ssh root@${ipgroup[$i]} -t -t "bash $install_home/install-docker.sh"
-	echo "line 43 $i: $i"
+	# echo "line 43 $i: $i"
 	if [[ $i == 0 ]]; then
 		ssh root@${ipgroup[$i]} -t -t "bash $install_home/k8snode1modifyhostname.sh"
 	elif [[ $i == 1 ]]; then
