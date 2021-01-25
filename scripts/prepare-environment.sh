@@ -2,7 +2,7 @@
 #date:18-01-2021
 
 nodegroup=(k8snode1 k8snode2 k8snode3)
-
+install_home="/root/k8s"
 # 增加主机IP和主机名的对应关系
 funcIncreaseIpHostname(){
 i=0
@@ -12,7 +12,7 @@ sudo cat >> /etc/hosts <<EOF
 $line ${nodegroup[$i]}
 EOF
 ((i++))
-done < node.txt
+done < $install_home/node.txt
 }
 
 funcCloseSwap(){

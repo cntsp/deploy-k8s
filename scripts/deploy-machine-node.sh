@@ -1,6 +1,21 @@
 #!/bin/bash
 
-ipgroup=(192.168.10.128 192.168.10.129 192.168.10.130)
+# ipgroup=(192.168.96.67 192.168.96.76 192.168.96.68)
+ipgroup=()
+## 接收ip, 生成IP数组
+i=0
+while read -r line
+do
+if [[ $i == 0 ]]; then
+	ipgroup[0]=$line
+elif [[ $i == 1 ]]; then
+	ipgroup[1]=$line
+else
+	ipgroup[2]=$line
+fi
+(( i++ ))
+done < /root/k8s/nodex.txt
+
 
 funcNoPasswordLogin(){
 echo -e "\033[31下面请按回车键：\033[0m"

@@ -1,14 +1,15 @@
 #!/bin/bash
 #date:19-01-2021
 
-ipgroup=(192.168.10.128 192.168.10.129 192.168.10.130)
-
+install_home="/root/k8s"
+# kuboardv.2
 funcInstallKuboardV2(){
-kubectl apply -f ./kuboard-v2.yaml
-kubectl apply -f ./metrics-server.yaml
+kubectl apply -f $install_home/kuboard-v2.yaml
+kubectl apply -f $install_home/metrics-server.yaml
 
 }
 
+# kuboardv.3暂时不用 
 funcInstallKuboardV3(){
 sudo docker run -d \
  --restart=unless-stopped \

@@ -1,12 +1,12 @@
-# `ubuntu 18.04.5`上shell脚本离线一键部署`k8s-v1.18.5`
+# shell脚本离线一键部署k8s集群
 
 ## 注意事项(单master存在单点故障，生产环境慎用)
-1.  三台`ubuntu18.04.5`系统，主机名不要相同，保证时间相同
-2.  在内网机器中，需要单独找一台部署机来执行脚本，保证部署机器与要部署三台节点正常通信
-3.  修改4个文件的`IP`数组，`start.sh`、`./scripts/deploy-machine-node.sh`、`./scripts/nodex.txt`、`./scripts/install-kuboard.sh`
-4. 默认`IP`数组中的第一个`IP`为master节点, 例如：`ipgroup`=(192.168.10.128 192.168.10.129 192.168.10.130),  那么192.168.10.128 就是master IP， 129和130就是node IP
-5. 选择`kuboard`作为`k8s`容器集群web端的管理工具
-6. 还有三个文件夹没有上传，一个是`deb`文件夹，一个是`master-images`文件，一个是`node-images`文件夹，deb里存放的是`docker-ce`、`kubectl`、`kubelet`、`kubeadm`软件的安装依赖包，`master-images`存放的是`master`节点的需要镜像，`node-images`存放的是`node`节点需要的镜像
+1.  三台`ubuntu18.04.5`系统，主机名不要相同，保证时间相同。
+2.  在内网机器中，需要单独找一台部署机来执行脚本，保证部署机器与要部署三台节点正常通信。
+3.  只需要修改`./scripts/node.txt `文件中的`IP`即可，默认文件中第一行的`IP`为master节点。
+5. 选择`kuboard`作为`k8s`容器集群web端的管理工具。
+6. 还有三个文件夹没有上传，一个是`deb`文件夹，一个是`master-images`文件，一个是`node-images`文件夹，deb里存放的是`docker-ce`、`kubectl`、`kubelet`、`kubeadm`软件的安装依赖包，`master-images`存放的是`master`节点的需要镜像，`node-images`存放的是`node`节点需要的镜像。
+6.  部署需要的镜像和deb包以及脚本都会拷贝到三个节点对应的`/root/k8s`目录下。
 
 
 
@@ -92,5 +92,5 @@ bash -xv  start.sh
 ```
 
 1. 执行完成后会输出一条命令，就是`kubeadm join ... `，需要在另外两个node节点执行该命令，稍等片刻
-   就可以在master节点上执行 `kubectl get nodes`
-2. `kuboard`访问在master节点的` IP+32567 端口`,登录的token保存在master机器的`/root/token.txt`中
+   就可以在master节点上执行 `kubectl get nodes`。
+2. `kuboard`访问在master节点的` IP+32567 端口`,登录的token保存在master机器的`/root/token.txt`中。

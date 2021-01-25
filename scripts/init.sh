@@ -14,7 +14,7 @@ funcSetupMaster(){
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
-kubectl apply -f kube-flannel.yaml
+kubectl apply -f /root/k8s/kube-flannel.yaml
 }
 
 main(){
