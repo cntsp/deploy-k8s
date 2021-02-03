@@ -4,6 +4,12 @@
 
 ## 一：在线部署(`online-deploy-k8s`)，项目在`online-deploy-k8s`下
 
+### 说明事项：
+
+1. 在线部署为shell脚本在`ubuntu`系统和`centos7`系统分别一键部署`k8s`单master两node架构
+
+
+
 
 
 ## 二：离线部署(`offline-deploy-k8s`), 项目在 `offline-deploy-k8s`下
@@ -28,10 +34,10 @@
 
 ### **架构图**
 
-1. 本次部署架构图
+1. 本次自动化部署架构图
 
    ![](./1.png)
 
-2. 三节点高可用架构图
+2. 生产环境三节点高可用架构图
 
    ![](./HA.png)
