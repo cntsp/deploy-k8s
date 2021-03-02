@@ -45,7 +45,7 @@ cat >> /etc/docker/daemon.json << EOF
 }
 EOF
 
-systemctl daemon-reload && systemctl restart docker
+systemctl daemon-reload && systemctl restart docker && systemctl enable docker
 }
 
 # 添加k8s仓库源地址，安装kubeadm、kubelet、kubectl命令
