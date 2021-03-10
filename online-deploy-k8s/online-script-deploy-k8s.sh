@@ -19,6 +19,17 @@ sed -i 's|Selinux=enforcing|Selinux=disabled|g'  /etc/selinux/config
 setenforce 0
 sed -ri 's/.*swap.*/#&/'  /etc/fstab 
 swapoff -a
+
+cat <<EOF | sudo tee /etc/modules-load.d/k8s.conf
+br_netfilter
+EOF
+
+cat <<EOF | sudo tee /etc/sysctl.d/k8s.conf
+net.bridge.bridge-nf-call-ip6tables = 1
+net.bridge.bridge-nf-call-iptables = 1
+EOF
+
+sysctl -p /etc/sysctl.d/k8s.conf
 }
 
 # centos7部署docker
@@ -69,7 +80,7 @@ echo \
 apt-cache madison docker-ce
 
 # Install a specific version using the version
-sudo apt-get install docker-ce=<VERSION_STRING> docker-ce-cli=<VERSION_STRING> containerd.io
+sudo apt-get install docker-ce=19.03.6~3-0~ubuntu-bionic docker-ce-cli=19.03.6~3-0~ubuntu-bionic containerd.io
 
 cat >> /etc/docker/daemon.json << EOF
 {
@@ -114,7 +125,8 @@ EOF
 # 更新源列表
 apt-get update
 # 下载 kubectl，kubeadm以及 kubelet
-apt-get install -y kubelet=1.18.5-00 kubeadm=1.18.5-00 kubectl=1.18.5-00
+sudo apt-get install -y kubelet=1.18.5-00 kubeadm=1.18.5-00 kubectl=1.18.5-00
+sudo apt-mark hold kubelet kubeadm kubectl
 }
 
 
