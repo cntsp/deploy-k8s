@@ -105,9 +105,9 @@ gpgcheck=0
 repo_gpgcheck=0
 gpgkey=https://mirrors.aliyun.com/kubernetes/yum/doc/yum-key.gpg https://mirrors.aliyun.com/kubernetes/yum/doc/rpm-package-key.gpg
 EOF
-yum install -y kubelet-1.18.5 kubeadm-1.18.5 kubectl-1.18.5
+yum install -y kubelet-1.18.5 kubeadm-1.18.5 kubectl-1.18.5 --disableexcludes=kubernetes
 # 启用kubelet
-systemctl enable kubelet.service && systemctl start kubelet.service
+systemctl enable --now kubelet
 }
 
 # Ubuntu系统添加k8s仓库源地址，安装kubeadm、kubelet、kubectl命令
