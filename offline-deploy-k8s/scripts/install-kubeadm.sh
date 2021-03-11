@@ -17,7 +17,8 @@ funcSetupKubelet(){
 cat > /etc/default/kubelet << EOF
 KUBELET_EXTRA_ARGS="--fail-swap-on=false"
 EOF
-sudo systemctl daemon-reload && systemctl restart kubelet
+sudo systemctl daemon-reload && systemctl enable kubelet
+sleep 5
 }
 main(){
 funcInstallKubeadm
