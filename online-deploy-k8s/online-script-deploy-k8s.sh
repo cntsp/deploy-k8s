@@ -146,7 +146,10 @@ funcSetupMaster(){
 mkdir -p $HOME/.kube
 sudo cp -i /etc/kubernetes/admin.conf $HOME/.kube/config
 sudo chown $(id -u):$(id -g) $HOME/.kube/config
-sudo kubectl apply -f https://raw.githubusercontent.com/coreos/flannel/master/Documentation/kube-flannel.yml
+wget http://docs.tangwww.top:18080/k8s/k8s1.18.5/flannel/kube-flannel.yml
+wget http://docs.tangwww.top:18080/k8s/k8s1.18.5/images/master/flannel-v0.13.0.docker
+wget http://docs.tangwww.top:18080/k8s/k8s1.18.5/images/master/flanneld-v0.13.0-amd64.docker
+kubectl apply -f kube-flannel.yml
 }
 
 main(){
